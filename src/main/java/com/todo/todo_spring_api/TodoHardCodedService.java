@@ -39,7 +39,11 @@ public class TodoHardCodedService {
         return null;
     }
 
-
+    public Todo create(Todo todo) {
+        todo.setId(++idCounter);
+        todos.add(todo);
+        return todo;
+    }
 
     public Todo save(Todo todo) {
         Todo oldTodo = findById(todo.getId());

@@ -9,7 +9,9 @@ public class Todo {
     private String username;
     private boolean complete;
     private Date targetDate;
-
+    public void setId(Long id) {
+        this.id = id;
+    }
     public Long getId() {
         return id;
     }
