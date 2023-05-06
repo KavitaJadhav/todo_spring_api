@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -26,5 +28,23 @@ public class TodoResource {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("users/{username}/todos/{id}")
+    public ResponseEntity getTodo(@PathVariable String username, @PathVariable long id) {
+        Todo todo = todoHardCodedService.findById(id);
+        if (todo == null) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity(todo, HttpStatus.OK);
+    }
+
+    @PutMapping("users/{username}/todos/{id}")
+    public ResponseEntity updateTodo(@PathVariable String username, @PathVariable long id, @RequestBody Todo todo) {
+        Todo updatedTodo = todoHardCodedService.save(todo);
+        if (updatedTodo != null) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

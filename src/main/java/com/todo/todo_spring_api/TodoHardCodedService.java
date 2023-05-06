@@ -19,6 +19,8 @@ public class TodoHardCodedService {
         todos.add(new Todo(++counter, "Kavita", "Learn Grafana", new Date(), false));
     }
 
+    private long idCounter;
+
     public List<Todo> findAll(String username) {
         return todos;
     }
@@ -30,10 +32,21 @@ public class TodoHardCodedService {
         return todo;
     }
 
-    private Todo findById(long id) {
+    public Todo findById(long id) {
         for (Todo todo : todos) {
             if (todo.getId() == id) return todo;
         }
         return null;
+    }
+
+
+
+    public Todo save(Todo todo) {
+        Todo oldTodo = findById(todo.getId());
+        if (oldTodo == null) return null;
+
+        deleteById(todo.getId());
+        todos.add(todo);
+        return todo;
     }
 }
