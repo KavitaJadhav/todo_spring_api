@@ -1,10 +1,10 @@
 package com.todo.todo_spring_api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +18,13 @@ public class TodoResource {
     public List<Todo> getTodos(@PathVariable String username) {
         return todoHardCodedService.findAll(username);
     }
-    @GetMapping("todos")
-    public List<Todo> todos() {
-        return todoHardCodedService.findAll("username");
+
+    @DeleteMapping("users/{username}/todos/{id}")
+    public ResponseEntity deleteTodo(@PathVariable String username, @PathVariable long id) {
+        Todo todo = todoHardCodedService.deleteById(id);
+        if (todo != null) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 }
