@@ -1,4 +1,4 @@
-package com.todo.todo_spring_api;
+package com.todo.todo_spring_api.todo;
 
 import org.springframework.stereotype.Component;
 

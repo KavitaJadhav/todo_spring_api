@@ -1,4 +1,4 @@
-package com.todo.todo_spring_api;
+package com.todo.todo_spring_api.todo;
 
 import java.math.BigInteger;
 import java.util.Date;
