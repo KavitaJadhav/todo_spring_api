@@ -1,0 +1,5 @@
+insert into todo(id, username, description, target_date, complete) values(100, 'kavita', 'todo item1', CURRENT_DATE(), false)
+insert into todo(id, username, description, target_date, complete) values(200, 'kavita', 'todo item2', CURRENT_DATE(), false)
+insert into todo(id, username, description, target_date, complete) values(300, 'kavita', 'todo item3', CURRENT_DATE(), false)
+insert into todo(id, username, description, target_date, complete) values(400, 'kavita', 'todo item4', CURRENT_DATE(), false)
+insert into todo(id, username, description, target_date, complete) values(500, 'kavita', 'todo item5', CURRENT_DATE(), false)

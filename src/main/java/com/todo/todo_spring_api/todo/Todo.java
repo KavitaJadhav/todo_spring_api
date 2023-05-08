@@ -1,9 +1,16 @@
 package com.todo.todo_spring_api.todo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+
 import java.math.BigInteger;
 import java.util.Date;
 
+@Entity
 public class Todo {
+    @Id
+    @GeneratedValue
     private Long id;
     private String description;
     private String username;
@@ -24,6 +31,22 @@ public class Todo {
         return username;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
+    }
+
+    public void setTargetDate(Date targetDate) {
+        this.targetDate = targetDate;
+    }
+
     public boolean isComplete() {
         return complete;
     }
@@ -31,7 +54,8 @@ public class Todo {
     public Date getTargetDate() {
         return targetDate;
     }
-
+    public Todo() {
+    }
     public Todo(Long id, String username, String description, Date targetDate, boolean complete) {
         this.id = id;
         this.description = description;
